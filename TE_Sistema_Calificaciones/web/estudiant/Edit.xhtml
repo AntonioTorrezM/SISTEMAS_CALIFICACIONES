@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditEstudiantTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditEstudiantLabel_idEstudiante}" for="idEstudiante" />
+                    <h:inputText id="idEstudiante" value="#{estudiantController.selected.idEstudiante}" title="#{bundle.EditEstudiantTitle_idEstudiante}" required="true" requiredMessage="#{bundle.EditEstudiantRequiredMessage_idEstudiante}"/>
+                    <h:outputLabel value="#{bundle.EditEstudiantLabel_nombre}" for="nombre" />
+                    <h:inputText id="nombre" value="#{estudiantController.selected.nombre}" title="#{bundle.EditEstudiantTitle_nombre}" required="true" requiredMessage="#{bundle.EditEstudiantRequiredMessage_nombre}"/>
+                    <h:outputLabel value="#{bundle.EditEstudiantLabel_apellidos}" for="apellidos" />
+                    <h:inputText id="apellidos" value="#{estudiantController.selected.apellidos}" title="#{bundle.EditEstudiantTitle_apellidos}" required="true" requiredMessage="#{bundle.EditEstudiantRequiredMessage_apellidos}"/>
+                    <h:outputLabel value="#{bundle.EditEstudiantLabel_dni}" for="dni" />
+                    <h:inputText id="dni" value="#{estudiantController.selected.dni}" title="#{bundle.EditEstudiantTitle_dni}" required="true" requiredMessage="#{bundle.EditEstudiantRequiredMessage_dni}"/>
+                    <h:outputLabel value="#{bundle.EditEstudiantLabel_codigoest}" for="codigoest" />
+                    <h:inputText id="codigoest" value="#{estudiantController.selected.codigoest}" title="#{bundle.EditEstudiantTitle_codigoest}" required="true" requiredMessage="#{bundle.EditEstudiantRequiredMessage_codigoest}"/>
+                    <h:outputLabel value="#{bundle.EditEstudiantLabel_idGrado}" for="idGrado" />
+                    <h:inputText id="idGrado" value="#{estudiantController.selected.idGrado}" title="#{bundle.EditEstudiantTitle_idGrado}" required="true" requiredMessage="#{bundle.EditEstudiantRequiredMessage_idGrado}"/>
+                    <h:outputLabel value="#{bundle.EditEstudiantLabel_grad}" for="grad" />
+                    <h:selectOneMenu id="grad" value="#{estudiantController.selected.grad}" title="#{bundle.EditEstudiantTitle_grad}" required="true" requiredMessage="#{bundle.EditEstudiantRequiredMessage_grad}">
+                        <f:selectItems value="#{gradController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditEstudiantLabel_conclucionDescriptiv}" for="conclucionDescriptiv" />
+                    <h:selectOneMenu id="conclucionDescriptiv" value="#{estudiantController.selected.conclucionDescriptiv}" title="#{bundle.EditEstudiantTitle_conclucionDescriptiv}" >
+                        <f:selectItems value="#{conclucionDescriptivController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{estudiantController.update}" value="#{bundle.EditEstudiantSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditEstudiantViewLink}"/>
+                <br />
+                <h:commandLink action="#{estudiantController.prepareList}" value="#{bundle.EditEstudiantShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditEstudiantIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

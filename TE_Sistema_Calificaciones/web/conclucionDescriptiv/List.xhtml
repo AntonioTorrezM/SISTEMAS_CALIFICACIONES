@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListConclucionDescriptivTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListConclucionDescriptivEmpty}" rendered="#{conclucionDescriptivController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{conclucionDescriptivController.items.rowCount > 0}">
+                    <h:outputText value="#{conclucionDescriptivController.pagination.pageFirstItem + 1}..#{conclucionDescriptivController.pagination.pageLastItem + 1}/#{conclucionDescriptivController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{conclucionDescriptivController.previous}" value="#{bundle.Previous} #{conclucionDescriptivController.pagination.pageSize}" rendered="#{conclucionDescriptivController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{conclucionDescriptivController.next}" value="#{bundle.Next} #{conclucionDescriptivController.pagination.pageSize}" rendered="#{conclucionDescriptivController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{conclucionDescriptivController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListConclucionDescriptivTitle_idConcluciondescriptiva}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idConcluciondescriptiva}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListConclucionDescriptivTitle_idEstudiante}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idEstudiante}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListConclucionDescriptivTitle_idpersona}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idpersona}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListConclucionDescriptivTitle_descripcion}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.descripcion}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListConclucionDescriptivTitle_periodo}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.periodo}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListConclucionDescriptivTitle_estudiant}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.estudiant}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{conclucionDescriptivController.prepareView}" value="#{bundle.ListConclucionDescriptivViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{conclucionDescriptivController.prepareEdit}" value="#{bundle.ListConclucionDescriptivEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{conclucionDescriptivController.destroy}" value="#{bundle.ListConclucionDescriptivDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{conclucionDescriptivController.prepareCreate}" value="#{bundle.ListConclucionDescriptivCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListConclucionDescriptivIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

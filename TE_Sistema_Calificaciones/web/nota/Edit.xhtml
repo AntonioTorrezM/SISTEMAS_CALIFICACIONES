@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditNotaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditNotaLabel_idNotas}" for="idNotas" />
+                    <h:inputText id="idNotas" value="#{notaController.selected.idNotas}" title="#{bundle.EditNotaTitle_idNotas}" required="true" requiredMessage="#{bundle.EditNotaRequiredMessage_idNotas}"/>
+                    <h:outputLabel value="#{bundle.EditNotaLabel_nota1}" for="nota1" />
+                    <h:inputText id="nota1" value="#{notaController.selected.nota1}" title="#{bundle.EditNotaTitle_nota1}" required="true" requiredMessage="#{bundle.EditNotaRequiredMessage_nota1}"/>
+                    <h:outputLabel value="#{bundle.EditNotaLabel_nota2}" for="nota2" />
+                    <h:inputText id="nota2" value="#{notaController.selected.nota2}" title="#{bundle.EditNotaTitle_nota2}" required="true" requiredMessage="#{bundle.EditNotaRequiredMessage_nota2}"/>
+                    <h:outputLabel value="#{bundle.EditNotaLabel_nota3}" for="nota3" />
+                    <h:inputText id="nota3" value="#{notaController.selected.nota3}" title="#{bundle.EditNotaTitle_nota3}" required="true" requiredMessage="#{bundle.EditNotaRequiredMessage_nota3}"/>
+                    <h:outputLabel value="#{bundle.EditNotaLabel_nota4}" for="nota4" />
+                    <h:inputText id="nota4" value="#{notaController.selected.nota4}" title="#{bundle.EditNotaTitle_nota4}" required="true" requiredMessage="#{bundle.EditNotaRequiredMessage_nota4}"/>
+                    <h:outputLabel value="#{bundle.EditNotaLabel_promedio}" for="promedio" />
+                    <h:inputText id="promedio" value="#{notaController.selected.promedio}" title="#{bundle.EditNotaTitle_promedio}" required="true" requiredMessage="#{bundle.EditNotaRequiredMessage_promedio}"/>
+                    <h:outputLabel value="#{bundle.EditNotaLabel_idPeriodo}" for="idPeriodo" />
+                    <h:inputText id="idPeriodo" value="#{notaController.selected.idPeriodo}" title="#{bundle.EditNotaTitle_idPeriodo}" required="true" requiredMessage="#{bundle.EditNotaRequiredMessage_idPeriodo}"/>
+                    <h:outputLabel value="#{bundle.EditNotaLabel_notasPeriod}" for="notasPeriod" />
+                    <h:selectOneMenu id="notasPeriod" value="#{notaController.selected.notasPeriod}" title="#{bundle.EditNotaTitle_notasPeriod}" >
+                        <f:selectItems value="#{notasPeriodController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditNotaLabel_idEstudiante}" for="idEstudiante" />
+                    <h:selectOneMenu id="idEstudiante" value="#{notaController.selected.idEstudiante}" title="#{bundle.EditNotaTitle_idEstudiante}" required="true" requiredMessage="#{bundle.EditNotaRequiredMessage_idEstudiante}">
+                        <f:selectItems value="#{estudiantController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditNotaLabel_idCurso}" for="idCurso" />
+                    <h:selectOneMenu id="idCurso" value="#{notaController.selected.idCurso}" title="#{bundle.EditNotaTitle_idCurso}" required="true" requiredMessage="#{bundle.EditNotaRequiredMessage_idCurso}">
+                        <f:selectItems value="#{cursController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{notaController.update}" value="#{bundle.EditNotaSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditNotaViewLink}"/>
+                <br />
+                <h:commandLink action="#{notaController.prepareList}" value="#{bundle.EditNotaShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditNotaIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

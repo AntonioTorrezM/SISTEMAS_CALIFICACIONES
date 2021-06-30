@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateInstitucTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateInstitucLabel_idInstitución}" for="idInstitución" />
+                    <h:inputText id="idInstitución" value="#{institucController.selected.idInstitución}" title="#{bundle.CreateInstitucTitle_idInstitución}" required="true" requiredMessage="#{bundle.CreateInstitucRequiredMessage_idInstitución}"/>
+                    <h:outputLabel value="#{bundle.CreateInstitucLabel_nombre}" for="nombre" />
+                    <h:inputText id="nombre" value="#{institucController.selected.nombre}" title="#{bundle.CreateInstitucTitle_nombre}" required="true" requiredMessage="#{bundle.CreateInstitucRequiredMessage_nombre}"/>
+                    <h:outputLabel value="#{bundle.CreateInstitucLabel_nivel}" for="nivel" />
+                    <h:inputText id="nivel" value="#{institucController.selected.nivel}" title="#{bundle.CreateInstitucTitle_nivel}" required="true" requiredMessage="#{bundle.CreateInstitucRequiredMessage_nivel}"/>
+                    <h:outputLabel value="#{bundle.CreateInstitucLabel_codigoModular}" for="codigoModular" />
+                    <h:inputText id="codigoModular" value="#{institucController.selected.codigoModular}" title="#{bundle.CreateInstitucTitle_codigoModular}" required="true" requiredMessage="#{bundle.CreateInstitucRequiredMessage_codigoModular}"/>
+                    <h:outputLabel value="#{bundle.CreateInstitucLabel_logo}" for="logo" />
+                    <h:inputText id="logo" value="#{institucController.selected.logo}" title="#{bundle.CreateInstitucTitle_logo}" />
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{institucController.create}" value="#{bundle.CreateInstitucSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{institucController.prepareList}" value="#{bundle.CreateInstitucShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateInstitucIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

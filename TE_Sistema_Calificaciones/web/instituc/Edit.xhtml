@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditInstitucTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditInstitucLabel_idInstitución}" for="idInstitución" />
+                    <h:inputText id="idInstitución" value="#{institucController.selected.idInstitución}" title="#{bundle.EditInstitucTitle_idInstitución}" required="true" requiredMessage="#{bundle.EditInstitucRequiredMessage_idInstitución}"/>
+                    <h:outputLabel value="#{bundle.EditInstitucLabel_nombre}" for="nombre" />
+                    <h:inputText id="nombre" value="#{institucController.selected.nombre}" title="#{bundle.EditInstitucTitle_nombre}" required="true" requiredMessage="#{bundle.EditInstitucRequiredMessage_nombre}"/>
+                    <h:outputLabel value="#{bundle.EditInstitucLabel_nivel}" for="nivel" />
+                    <h:inputText id="nivel" value="#{institucController.selected.nivel}" title="#{bundle.EditInstitucTitle_nivel}" required="true" requiredMessage="#{bundle.EditInstitucRequiredMessage_nivel}"/>
+                    <h:outputLabel value="#{bundle.EditInstitucLabel_codigoModular}" for="codigoModular" />
+                    <h:inputText id="codigoModular" value="#{institucController.selected.codigoModular}" title="#{bundle.EditInstitucTitle_codigoModular}" required="true" requiredMessage="#{bundle.EditInstitucRequiredMessage_codigoModular}"/>
+                    <h:outputLabel value="#{bundle.EditInstitucLabel_logo}" for="logo" />
+                    <h:inputText id="logo" value="#{institucController.selected.logo}" title="#{bundle.EditInstitucTitle_logo}" />
+                </h:panelGrid>
+                <h:commandLink action="#{institucController.update}" value="#{bundle.EditInstitucSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditInstitucViewLink}"/>
+                <br />
+                <h:commandLink action="#{institucController.prepareList}" value="#{bundle.EditInstitucShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditInstitucIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

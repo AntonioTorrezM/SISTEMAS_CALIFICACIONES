@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewGradTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewGradLabel_idGrado}"/>
+                    <h:outputText value="#{gradController.selected.idGrado}" title="#{bundle.ViewGradTitle_idGrado}"/>
+                    <h:outputText value="#{bundle.ViewGradLabel_grado}"/>
+                    <h:outputText value="#{gradController.selected.grado}" title="#{bundle.ViewGradTitle_grado}"/>
+                    <h:outputText value="#{bundle.ViewGradLabel_seccion}"/>
+                    <h:outputText value="#{gradController.selected.seccion}" title="#{bundle.ViewGradTitle_seccion}"/>
+                    <h:outputText value="#{bundle.ViewGradLabel_tutor}"/>
+                    <h:outputText value="#{gradController.selected.tutor}" title="#{bundle.ViewGradTitle_tutor}"/>
+                    <h:outputText value="#{bundle.ViewGradLabel_estudiant}"/>
+                    <h:outputText value="#{gradController.selected.estudiant}" title="#{bundle.ViewGradTitle_estudiant}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{gradController.destroyAndView}" value="#{bundle.ViewGradDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewGradEditLink}"/>
+                <br />
+                <h:commandLink action="#{gradController.prepareCreate}" value="#{bundle.ViewGradCreateLink}" />
+                <br />
+                <h:commandLink action="#{gradController.prepareList}" value="#{bundle.ViewGradShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewGradIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateEstudiantTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateEstudiantLabel_idEstudiante}" for="idEstudiante" />
+                    <h:inputText id="idEstudiante" value="#{estudiantController.selected.idEstudiante}" title="#{bundle.CreateEstudiantTitle_idEstudiante}" required="true" requiredMessage="#{bundle.CreateEstudiantRequiredMessage_idEstudiante}"/>
+                    <h:outputLabel value="#{bundle.CreateEstudiantLabel_nombre}" for="nombre" />
+                    <h:inputText id="nombre" value="#{estudiantController.selected.nombre}" title="#{bundle.CreateEstudiantTitle_nombre}" required="true" requiredMessage="#{bundle.CreateEstudiantRequiredMessage_nombre}"/>
+                    <h:outputLabel value="#{bundle.CreateEstudiantLabel_apellidos}" for="apellidos" />
+                    <h:inputText id="apellidos" value="#{estudiantController.selected.apellidos}" title="#{bundle.CreateEstudiantTitle_apellidos}" required="true" requiredMessage="#{bundle.CreateEstudiantRequiredMessage_apellidos}"/>
+                    <h:outputLabel value="#{bundle.CreateEstudiantLabel_dni}" for="dni" />
+                    <h:inputText id="dni" value="#{estudiantController.selected.dni}" title="#{bundle.CreateEstudiantTitle_dni}" required="true" requiredMessage="#{bundle.CreateEstudiantRequiredMessage_dni}"/>
+                    <h:outputLabel value="#{bundle.CreateEstudiantLabel_codigoest}" for="codigoest" />
+                    <h:inputText id="codigoest" value="#{estudiantController.selected.codigoest}" title="#{bundle.CreateEstudiantTitle_codigoest}" required="true" requiredMessage="#{bundle.CreateEstudiantRequiredMessage_codigoest}"/>
+                    <h:outputLabel value="#{bundle.CreateEstudiantLabel_idGrado}" for="idGrado" />
+                    <h:inputText id="idGrado" value="#{estudiantController.selected.idGrado}" title="#{bundle.CreateEstudiantTitle_idGrado}" required="true" requiredMessage="#{bundle.CreateEstudiantRequiredMessage_idGrado}"/>
+                    <h:outputLabel value="#{bundle.CreateEstudiantLabel_grad}" for="grad" />
+                    <h:selectOneMenu id="grad" value="#{estudiantController.selected.grad}" title="#{bundle.CreateEstudiantTitle_grad}" required="true" requiredMessage="#{bundle.CreateEstudiantRequiredMessage_grad}">
+                        <f:selectItems value="#{gradController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateEstudiantLabel_conclucionDescriptiv}" for="conclucionDescriptiv" />
+                    <h:selectOneMenu id="conclucionDescriptiv" value="#{estudiantController.selected.conclucionDescriptiv}" title="#{bundle.CreateEstudiantTitle_conclucionDescriptiv}" >
+                        <f:selectItems value="#{conclucionDescriptivController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{estudiantController.create}" value="#{bundle.CreateEstudiantSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{estudiantController.prepareList}" value="#{bundle.CreateEstudiantShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateEstudiantIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateGradTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateGradLabel_idGrado}" for="idGrado" />
+                    <h:inputText id="idGrado" value="#{gradController.selected.idGrado}" title="#{bundle.CreateGradTitle_idGrado}" required="true" requiredMessage="#{bundle.CreateGradRequiredMessage_idGrado}"/>
+                    <h:outputLabel value="#{bundle.CreateGradLabel_grado}" for="grado" />
+                    <h:inputText id="grado" value="#{gradController.selected.grado}" title="#{bundle.CreateGradTitle_grado}" required="true" requiredMessage="#{bundle.CreateGradRequiredMessage_grado}"/>
+                    <h:outputLabel value="#{bundle.CreateGradLabel_seccion}" for="seccion" />
+                    <h:inputText id="seccion" value="#{gradController.selected.seccion}" title="#{bundle.CreateGradTitle_seccion}" required="true" requiredMessage="#{bundle.CreateGradRequiredMessage_seccion}"/>
+                    <h:outputLabel value="#{bundle.CreateGradLabel_tutor}" for="tutor" />
+                    <h:inputText id="tutor" value="#{gradController.selected.tutor}" title="#{bundle.CreateGradTitle_tutor}" required="true" requiredMessage="#{bundle.CreateGradRequiredMessage_tutor}"/>
+                    <h:outputLabel value="#{bundle.CreateGradLabel_estudiant}" for="estudiant" />
+                    <h:selectOneMenu id="estudiant" value="#{gradController.selected.estudiant}" title="#{bundle.CreateGradTitle_estudiant}" >
+                        <f:selectItems value="#{estudiantController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{gradController.create}" value="#{bundle.CreateGradSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{gradController.prepareList}" value="#{bundle.CreateGradShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateGradIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

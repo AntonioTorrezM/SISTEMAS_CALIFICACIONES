@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListNotasPeriodTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListNotasPeriodEmpty}" rendered="#{notasPeriodController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{notasPeriodController.items.rowCount > 0}">
+                    <h:outputText value="#{notasPeriodController.pagination.pageFirstItem + 1}..#{notasPeriodController.pagination.pageLastItem + 1}/#{notasPeriodController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{notasPeriodController.previous}" value="#{bundle.Previous} #{notasPeriodController.pagination.pageSize}" rendered="#{notasPeriodController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{notasPeriodController.next}" value="#{bundle.Next} #{notasPeriodController.pagination.pageSize}" rendered="#{notasPeriodController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{notasPeriodController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListNotasPeriodTitle_idPeriodo}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idPeriodo}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListNotasPeriodTitle_notaPeriodo1}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.notaPeriodo1}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListNotasPeriodTitle_notaPeriodo2}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.notaPeriodo2}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListNotasPeriodTitle_notaPeriodo3}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.notaPeriodo3}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListNotasPeriodTitle_notaPeriodo4}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.notaPeriodo4}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListNotasPeriodTitle_promedioAnual}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.promedioAnual}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListNotasPeriodTitle_nota}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.nota}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{notasPeriodController.prepareView}" value="#{bundle.ListNotasPeriodViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{notasPeriodController.prepareEdit}" value="#{bundle.ListNotasPeriodEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{notasPeriodController.destroy}" value="#{bundle.ListNotasPeriodDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{notasPeriodController.prepareCreate}" value="#{bundle.ListNotasPeriodCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListNotasPeriodIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

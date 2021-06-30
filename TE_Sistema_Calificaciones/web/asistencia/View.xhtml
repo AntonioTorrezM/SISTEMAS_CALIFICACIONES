@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewAsistenciaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewAsistenciaLabel_idAsistencias}"/>
+                    <h:outputText value="#{asistenciaController.selected.idAsistencias}" title="#{bundle.ViewAsistenciaTitle_idAsistencias}"/>
+                    <h:outputText value="#{bundle.ViewAsistenciaLabel_inasistjustificada}"/>
+                    <h:outputText value="#{asistenciaController.selected.inasistjustificada}" title="#{bundle.ViewAsistenciaTitle_inasistjustificada}"/>
+                    <h:outputText value="#{bundle.ViewAsistenciaLabel_inasistInjustificada}"/>
+                    <h:outputText value="#{asistenciaController.selected.inasistInjustificada}" title="#{bundle.ViewAsistenciaTitle_inasistInjustificada}"/>
+                    <h:outputText value="#{bundle.ViewAsistenciaLabel_tardJustificada}"/>
+                    <h:outputText value="#{asistenciaController.selected.tardJustificada}" title="#{bundle.ViewAsistenciaTitle_tardJustificada}"/>
+                    <h:outputText value="#{bundle.ViewAsistenciaLabel_tardInjustificada}"/>
+                    <h:outputText value="#{asistenciaController.selected.tardInjustificada}" title="#{bundle.ViewAsistenciaTitle_tardInjustificada}"/>
+                    <h:outputText value="#{bundle.ViewAsistenciaLabel_idEstudiante}"/>
+                    <h:outputText value="#{asistenciaController.selected.idEstudiante}" title="#{bundle.ViewAsistenciaTitle_idEstudiante}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{asistenciaController.destroyAndView}" value="#{bundle.ViewAsistenciaDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewAsistenciaEditLink}"/>
+                <br />
+                <h:commandLink action="#{asistenciaController.prepareCreate}" value="#{bundle.ViewAsistenciaCreateLink}" />
+                <br />
+                <h:commandLink action="#{asistenciaController.prepareList}" value="#{bundle.ViewAsistenciaShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewAsistenciaIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

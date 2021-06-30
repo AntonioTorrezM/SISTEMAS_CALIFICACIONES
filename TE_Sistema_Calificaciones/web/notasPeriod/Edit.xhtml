@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditNotasPeriodTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditNotasPeriodLabel_idPeriodo}" for="idPeriodo" />
+                    <h:inputText id="idPeriodo" value="#{notasPeriodController.selected.idPeriodo}" title="#{bundle.EditNotasPeriodTitle_idPeriodo}" required="true" requiredMessage="#{bundle.EditNotasPeriodRequiredMessage_idPeriodo}"/>
+                    <h:outputLabel value="#{bundle.EditNotasPeriodLabel_notaPeriodo1}" for="notaPeriodo1" />
+                    <h:inputText id="notaPeriodo1" value="#{notasPeriodController.selected.notaPeriodo1}" title="#{bundle.EditNotasPeriodTitle_notaPeriodo1}" />
+                    <h:outputLabel value="#{bundle.EditNotasPeriodLabel_notaPeriodo2}" for="notaPeriodo2" />
+                    <h:inputText id="notaPeriodo2" value="#{notasPeriodController.selected.notaPeriodo2}" title="#{bundle.EditNotasPeriodTitle_notaPeriodo2}" />
+                    <h:outputLabel value="#{bundle.EditNotasPeriodLabel_notaPeriodo3}" for="notaPeriodo3" />
+                    <h:inputText id="notaPeriodo3" value="#{notasPeriodController.selected.notaPeriodo3}" title="#{bundle.EditNotasPeriodTitle_notaPeriodo3}" />
+                    <h:outputLabel value="#{bundle.EditNotasPeriodLabel_notaPeriodo4}" for="notaPeriodo4" />
+                    <h:inputText id="notaPeriodo4" value="#{notasPeriodController.selected.notaPeriodo4}" title="#{bundle.EditNotasPeriodTitle_notaPeriodo4}" />
+                    <h:outputLabel value="#{bundle.EditNotasPeriodLabel_promedioAnual}" for="promedioAnual" />
+                    <h:inputText id="promedioAnual" value="#{notasPeriodController.selected.promedioAnual}" title="#{bundle.EditNotasPeriodTitle_promedioAnual}" />
+                    <h:outputLabel value="#{bundle.EditNotasPeriodLabel_nota}" for="nota" />
+                    <h:selectOneMenu id="nota" value="#{notasPeriodController.selected.nota}" title="#{bundle.EditNotasPeriodTitle_nota}" required="true" requiredMessage="#{bundle.EditNotasPeriodRequiredMessage_nota}">
+                        <f:selectItems value="#{notaController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{notasPeriodController.update}" value="#{bundle.EditNotasPeriodSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditNotasPeriodViewLink}"/>
+                <br />
+                <h:commandLink action="#{notasPeriodController.prepareList}" value="#{bundle.EditNotasPeriodShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditNotasPeriodIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

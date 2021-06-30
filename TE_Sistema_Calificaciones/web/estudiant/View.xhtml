@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewEstudiantTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewEstudiantLabel_idEstudiante}"/>
+                    <h:outputText value="#{estudiantController.selected.idEstudiante}" title="#{bundle.ViewEstudiantTitle_idEstudiante}"/>
+                    <h:outputText value="#{bundle.ViewEstudiantLabel_nombre}"/>
+                    <h:outputText value="#{estudiantController.selected.nombre}" title="#{bundle.ViewEstudiantTitle_nombre}"/>
+                    <h:outputText value="#{bundle.ViewEstudiantLabel_apellidos}"/>
+                    <h:outputText value="#{estudiantController.selected.apellidos}" title="#{bundle.ViewEstudiantTitle_apellidos}"/>
+                    <h:outputText value="#{bundle.ViewEstudiantLabel_dni}"/>
+                    <h:outputText value="#{estudiantController.selected.dni}" title="#{bundle.ViewEstudiantTitle_dni}"/>
+                    <h:outputText value="#{bundle.ViewEstudiantLabel_codigoest}"/>
+                    <h:outputText value="#{estudiantController.selected.codigoest}" title="#{bundle.ViewEstudiantTitle_codigoest}"/>
+                    <h:outputText value="#{bundle.ViewEstudiantLabel_idGrado}"/>
+                    <h:outputText value="#{estudiantController.selected.idGrado}" title="#{bundle.ViewEstudiantTitle_idGrado}"/>
+                    <h:outputText value="#{bundle.ViewEstudiantLabel_grad}"/>
+                    <h:outputText value="#{estudiantController.selected.grad}" title="#{bundle.ViewEstudiantTitle_grad}"/>
+                    <h:outputText value="#{bundle.ViewEstudiantLabel_conclucionDescriptiv}"/>
+                    <h:outputText value="#{estudiantController.selected.conclucionDescriptiv}" title="#{bundle.ViewEstudiantTitle_conclucionDescriptiv}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{estudiantController.destroyAndView}" value="#{bundle.ViewEstudiantDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewEstudiantEditLink}"/>
+                <br />
+                <h:commandLink action="#{estudiantController.prepareCreate}" value="#{bundle.ViewEstudiantCreateLink}" />
+                <br />
+                <h:commandLink action="#{estudiantController.prepareList}" value="#{bundle.ViewEstudiantShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewEstudiantIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditAsistenciaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditAsistenciaLabel_idAsistencias}" for="idAsistencias" />
+                    <h:inputText id="idAsistencias" value="#{asistenciaController.selected.idAsistencias}" title="#{bundle.EditAsistenciaTitle_idAsistencias}" required="true" requiredMessage="#{bundle.EditAsistenciaRequiredMessage_idAsistencias}"/>
+                    <h:outputLabel value="#{bundle.EditAsistenciaLabel_inasistjustificada}" for="inasistjustificada" />
+                    <h:inputText id="inasistjustificada" value="#{asistenciaController.selected.inasistjustificada}" title="#{bundle.EditAsistenciaTitle_inasistjustificada}" />
+                    <h:outputLabel value="#{bundle.EditAsistenciaLabel_inasistInjustificada}" for="inasistInjustificada" />
+                    <h:inputText id="inasistInjustificada" value="#{asistenciaController.selected.inasistInjustificada}" title="#{bundle.EditAsistenciaTitle_inasistInjustificada}" />
+                    <h:outputLabel value="#{bundle.EditAsistenciaLabel_tardJustificada}" for="tardJustificada" />
+                    <h:inputText id="tardJustificada" value="#{asistenciaController.selected.tardJustificada}" title="#{bundle.EditAsistenciaTitle_tardJustificada}" />
+                    <h:outputLabel value="#{bundle.EditAsistenciaLabel_tardInjustificada}" for="tardInjustificada" />
+                    <h:inputText id="tardInjustificada" value="#{asistenciaController.selected.tardInjustificada}" title="#{bundle.EditAsistenciaTitle_tardInjustificada}" />
+                    <h:outputLabel value="#{bundle.EditAsistenciaLabel_idEstudiante}" for="idEstudiante" />
+                    <h:selectOneMenu id="idEstudiante" value="#{asistenciaController.selected.idEstudiante}" title="#{bundle.EditAsistenciaTitle_idEstudiante}" required="true" requiredMessage="#{bundle.EditAsistenciaRequiredMessage_idEstudiante}">
+                        <f:selectItems value="#{estudiantController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{asistenciaController.update}" value="#{bundle.EditAsistenciaSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditAsistenciaViewLink}"/>
+                <br />
+                <h:commandLink action="#{asistenciaController.prepareList}" value="#{bundle.EditAsistenciaShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditAsistenciaIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

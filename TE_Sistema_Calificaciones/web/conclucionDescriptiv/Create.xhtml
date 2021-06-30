@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateConclucionDescriptivTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateConclucionDescriptivLabel_idConcluciondescriptiva}" for="idConcluciondescriptiva" />
+                    <h:inputText id="idConcluciondescriptiva" value="#{conclucionDescriptivController.selected.idConcluciondescriptiva}" title="#{bundle.CreateConclucionDescriptivTitle_idConcluciondescriptiva}" required="true" requiredMessage="#{bundle.CreateConclucionDescriptivRequiredMessage_idConcluciondescriptiva}"/>
+                    <h:outputLabel value="#{bundle.CreateConclucionDescriptivLabel_idEstudiante}" for="idEstudiante" />
+                    <h:inputText id="idEstudiante" value="#{conclucionDescriptivController.selected.idEstudiante}" title="#{bundle.CreateConclucionDescriptivTitle_idEstudiante}" />
+                    <h:outputLabel value="#{bundle.CreateConclucionDescriptivLabel_idpersona}" for="idpersona" />
+                    <h:inputText id="idpersona" value="#{conclucionDescriptivController.selected.idpersona}" title="#{bundle.CreateConclucionDescriptivTitle_idpersona}" />
+                    <h:outputLabel value="#{bundle.CreateConclucionDescriptivLabel_descripcion}" for="descripcion" />
+                    <h:inputText id="descripcion" value="#{conclucionDescriptivController.selected.descripcion}" title="#{bundle.CreateConclucionDescriptivTitle_descripcion}" />
+                    <h:outputLabel value="#{bundle.CreateConclucionDescriptivLabel_periodo}" for="periodo" />
+                    <h:inputText id="periodo" value="#{conclucionDescriptivController.selected.periodo}" title="#{bundle.CreateConclucionDescriptivTitle_periodo}" />
+                    <h:outputLabel value="#{bundle.CreateConclucionDescriptivLabel_estudiant}" for="estudiant" />
+                    <h:selectOneMenu id="estudiant" value="#{conclucionDescriptivController.selected.estudiant}" title="#{bundle.CreateConclucionDescriptivTitle_estudiant}" required="true" requiredMessage="#{bundle.CreateConclucionDescriptivRequiredMessage_estudiant}">
+                        <f:selectItems value="#{estudiantController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{conclucionDescriptivController.create}" value="#{bundle.CreateConclucionDescriptivSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{conclucionDescriptivController.prepareList}" value="#{bundle.CreateConclucionDescriptivShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateConclucionDescriptivIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

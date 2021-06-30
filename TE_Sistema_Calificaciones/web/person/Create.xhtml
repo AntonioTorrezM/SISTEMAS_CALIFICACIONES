@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreatePersonTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreatePersonLabel_idPersonal}" for="idPersonal" />
+                    <h:inputText id="idPersonal" value="#{personController.selected.idPersonal}" title="#{bundle.CreatePersonTitle_idPersonal}" required="true" requiredMessage="#{bundle.CreatePersonRequiredMessage_idPersonal}"/>
+                    <h:outputLabel value="#{bundle.CreatePersonLabel_nombre}" for="nombre" />
+                    <h:inputText id="nombre" value="#{personController.selected.nombre}" title="#{bundle.CreatePersonTitle_nombre}" required="true" requiredMessage="#{bundle.CreatePersonRequiredMessage_nombre}"/>
+                    <h:outputLabel value="#{bundle.CreatePersonLabel_apellidos}" for="apellidos" />
+                    <h:inputText id="apellidos" value="#{personController.selected.apellidos}" title="#{bundle.CreatePersonTitle_apellidos}" required="true" requiredMessage="#{bundle.CreatePersonRequiredMessage_apellidos}"/>
+                    <h:outputLabel value="#{bundle.CreatePersonLabel_usuario}" for="usuario" />
+                    <h:inputText id="usuario" value="#{personController.selected.usuario}" title="#{bundle.CreatePersonTitle_usuario}" required="true" requiredMessage="#{bundle.CreatePersonRequiredMessage_usuario}"/>
+                    <h:outputLabel value="#{bundle.CreatePersonLabel_clave}" for="clave" />
+                    <h:inputText id="clave" value="#{personController.selected.clave}" title="#{bundle.CreatePersonTitle_clave}" required="true" requiredMessage="#{bundle.CreatePersonRequiredMessage_clave}"/>
+                    <h:outputLabel value="#{bundle.CreatePersonLabel_idcurso}" for="idcurso" />
+                    <h:selectOneMenu id="idcurso" value="#{personController.selected.idcurso}" title="#{bundle.CreatePersonTitle_idcurso}" required="true" requiredMessage="#{bundle.CreatePersonRequiredMessage_idcurso}">
+                        <f:selectItems value="#{cursController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreatePersonLabel_idTipousuario}" for="idTipousuario" />
+                    <h:selectOneMenu id="idTipousuario" value="#{personController.selected.idTipousuario}" title="#{bundle.CreatePersonTitle_idTipousuario}" required="true" requiredMessage="#{bundle.CreatePersonRequiredMessage_idTipousuario}">
+                        <f:selectItems value="#{tipoUsuarController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{personController.create}" value="#{bundle.CreatePersonSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{personController.prepareList}" value="#{bundle.CreatePersonShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreatePersonIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

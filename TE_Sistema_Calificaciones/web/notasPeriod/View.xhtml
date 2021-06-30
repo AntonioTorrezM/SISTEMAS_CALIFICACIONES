@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewNotasPeriodTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewNotasPeriodLabel_idPeriodo}"/>
+                    <h:outputText value="#{notasPeriodController.selected.idPeriodo}" title="#{bundle.ViewNotasPeriodTitle_idPeriodo}"/>
+                    <h:outputText value="#{bundle.ViewNotasPeriodLabel_notaPeriodo1}"/>
+                    <h:outputText value="#{notasPeriodController.selected.notaPeriodo1}" title="#{bundle.ViewNotasPeriodTitle_notaPeriodo1}"/>
+                    <h:outputText value="#{bundle.ViewNotasPeriodLabel_notaPeriodo2}"/>
+                    <h:outputText value="#{notasPeriodController.selected.notaPeriodo2}" title="#{bundle.ViewNotasPeriodTitle_notaPeriodo2}"/>
+                    <h:outputText value="#{bundle.ViewNotasPeriodLabel_notaPeriodo3}"/>
+                    <h:outputText value="#{notasPeriodController.selected.notaPeriodo3}" title="#{bundle.ViewNotasPeriodTitle_notaPeriodo3}"/>
+                    <h:outputText value="#{bundle.ViewNotasPeriodLabel_notaPeriodo4}"/>
+                    <h:outputText value="#{notasPeriodController.selected.notaPeriodo4}" title="#{bundle.ViewNotasPeriodTitle_notaPeriodo4}"/>
+                    <h:outputText value="#{bundle.ViewNotasPeriodLabel_promedioAnual}"/>
+                    <h:outputText value="#{notasPeriodController.selected.promedioAnual}" title="#{bundle.ViewNotasPeriodTitle_promedioAnual}"/>
+                    <h:outputText value="#{bundle.ViewNotasPeriodLabel_nota}"/>
+                    <h:outputText value="#{notasPeriodController.selected.nota}" title="#{bundle.ViewNotasPeriodTitle_nota}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{notasPeriodController.destroyAndView}" value="#{bundle.ViewNotasPeriodDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewNotasPeriodEditLink}"/>
+                <br />
+                <h:commandLink action="#{notasPeriodController.prepareCreate}" value="#{bundle.ViewNotasPeriodCreateLink}" />
+                <br />
+                <h:commandLink action="#{notasPeriodController.prepareList}" value="#{bundle.ViewNotasPeriodShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewNotasPeriodIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
